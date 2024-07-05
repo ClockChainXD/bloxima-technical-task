@@ -27,7 +27,6 @@ the backend project.
 wallet (ETH Mainnet and Holesky), check eligibility, and mint
 tokens via web3Modal.
 2. Render the collection in a grid.
-Bloxima Technical Task 2
  - Render the whole supply of tokens and distinguish
  between minted and available for mint.
 3. Provide an option to register for an ordinal mint using a
@@ -53,6 +52,5 @@ the backend project. You don't do the ordinal steps)
 - Node.js
 - npm
 - Hardhat (for smart contract development)
-Bloxima Technical Task 3
 - Alchemy RPC URL, which can be created for free at
 [Alchemy](https://www.alchemy.com/)
