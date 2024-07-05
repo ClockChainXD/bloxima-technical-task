@@ -44,8 +44,8 @@ contract BloximaNFT is ERC721 {
     }
 
     function mintNFT() public isCandidate onlyOncePerWallet maxSupplyNotReached {
-        _safeMint(msg.sender, tokenCounter);
         tokenCounter++;
+        _safeMint(msg.sender, tokenCounter);
         hasMintedNFT[msg.sender] = true;
     }
 }
