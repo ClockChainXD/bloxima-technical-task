@@ -5,6 +5,7 @@ const Registration = require('./models/Registration');
 const { ethers } = require("ethers");
 const bloximaNFTABI = require('./BloximaNFTABI.json');
 const config = require('./config/config');
+const cors = require('cors');
 
 
 const db = connectDB();
@@ -12,7 +13,14 @@ const db = connectDB();
 const app = express();
 const port = config.PORT;
 
-app.get('/', (req, res) => {
+app.use(
+	cors({
+		origin: [
+			"http://localhost:5173"
+		],
+		credentials: true,
+	})
+);app.get('/', (req, res) => {
   res.send('Bloxima Backend Task Server is running');
 });
 
@@ -35,16 +43,21 @@ app.get('/nfts' , async (req, res) => {
     //Use ethers to fetch nfts from bloxima nft smart contract
     const holeskyProvider = new ethers.providers.JsonRpcProvider(config.HOLESKY_RPC_URL);
     const bloximaNFTContract = new ethers.Contract(config.BLOXIMA_NFT_CONTRACT_ADDRESS, bloximaNFTABI, holeskyProvider);
-    const mintedCount = await bloximaNFTContract.tokenCounter();
-    if(offset > mintedCount) {
+    const mintedCount = Number(await bloximaNFTContract.tokenCounter())
+    console.log(mintedCount)
+    /* if(offset > mintedCount) {
         res.status(400).send('Offset is greater than minted nfts');
-    }
-    data_size = data_size + offset > mintedCount ? mintedCount - offset : data_size;
+    } */
+    data_size = Math.min(data_size, 100);
     let nfts = [];
-    for(let i = offset; i < data_size; i++) {
-        const nft = await bloximaNFTContract.tokenURI(i+1);
-        console.log(nft);
-        nfts.push(nft);
+    for(let i = Number(offset); i < data_size; i++) {
+        const nftURI = await bloximaNFTContract.tokenURI(i+1);
+        const urlToFetch = new URL(`https://${nftURI}`);
+        const nftMetadataResponse = (await fetch(urlToFetch));
+        const nftMetadata = await nftMetadataResponse.json();
+        const nft_image = nftMetadata.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+        const nft_status = mintedCount >= Number(offset)+Number(i)+1 ? "minted" : "not_minted"
+        nfts.push({status: nft_status, image: nft_image, name: `Bloxima NFT ${i+1}`});
     }
     res.status(200).json(nfts);
 });

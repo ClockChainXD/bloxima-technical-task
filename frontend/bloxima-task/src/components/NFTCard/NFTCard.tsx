@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './NFTCard.module.css';
 
 export type NFTCardProps = {
-    status: 'minted' | 'not minted';
+    status: string;
     image: string;
     name: string;
 };

@@ -40,7 +40,6 @@
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
@@ -79,4 +78,22 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  background-color: var(--color-gray-900);
+  color: white;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+}
+
+.navbar-item {
+  font-size: 1rem;
+  margin-left: var(--space-md);
 }

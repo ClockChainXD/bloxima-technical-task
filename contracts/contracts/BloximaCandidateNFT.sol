@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract BloximaCandidateNFT is ERC721 {
     uint256 public tokenCounter;
     address public owner;
-    string public baseURI = "https://bloxima-candidate-nft.vercel.app/api/candidateNFT/uri";
+    string public baseURI = "https://api.keungz.com/ygpz/metadata/1";
     mapping(address => bool) public hasMintedNFT;
 
     constructor() ERC721("BloximaCandidateNFT", "BCNFT") {
@@ -31,7 +31,7 @@ contract BloximaCandidateNFT is ERC721 {
     }
 
     function tokenURI (uint256 _tokenId) public view override returns (string memory) {
-        return "https://bloxima-candidate-nft.vercel.app/api/candidateNFT/1";
+        return _baseURI();
     }
 
     function mintNFT() public onlyOncePerWallet {

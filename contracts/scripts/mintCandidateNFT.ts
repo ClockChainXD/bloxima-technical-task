@@ -5,9 +5,9 @@ import { BloximaNFT } from "../typechain-types/contracts/BloximaNFT";
 async function main() {
     // Contracts are deployed using the first signer/account by default
     const [owner] = await ethers.getSigners();
-    const candidateNFT = await ethers.getContractAt("BloximaCandidateNFT", "0xB4Fb7F28c05772A82f8dee2D271a9456Be3A8ccD");
+    const candidateNFT = await ethers.getContractAt("BloximaCandidateNFT", "0x93a63a5301a20CE98c39Fd48FE513c2298B18A66");
     await candidateNFT.mintNFT();
-    console.log("Candidate NFT minted at: ", await candidateNFT.ownerOf(1));
+    console.log("Candidate NFT minted at");
 }
 
 // We recommend this pattern to be able to use async/await everywhere

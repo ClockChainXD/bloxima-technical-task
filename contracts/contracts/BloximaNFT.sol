@@ -34,13 +34,17 @@ contract BloximaNFT is ERC721 {
         _;
     }
 
+    function totalSupply() public view returns (uint256) {
+        return maxSupply;
+    }
+
     function setCandidateNFTContract(address _bloximaCandidateNFTAddress) public {
         require(msg.sender == owner, "Only owner can set candidate NFT contract");
         candidateNFTContract = BloximaCandidateNFT(_bloximaCandidateNFTAddress);
     }
 
     function tokenURI (uint256 _tokenId) public view override returns (string memory) {
-        return string(abi.encodePacked("https://bloxima-nft.vercel.app/api/nft/uri/", Strings.toString(_tokenId)));
+        return string(abi.encodePacked("ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/", Strings.toString(_tokenId)));
     }
 
     function mintNFT() public isCandidate onlyOncePerWallet maxSupplyNotReached {

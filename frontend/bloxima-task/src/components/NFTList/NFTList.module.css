@@ -6,3 +6,42 @@
   grid-template-columns: repeat(auto-fill, minmax(var(--max-card-width), 1fr));
   gap: var(--grid-gap);
 }
+
+.loadMoreContainer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.loadMoreButton {
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 300ms, color 300ms;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  padding: 1.5rem 1.5rem;
+
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
