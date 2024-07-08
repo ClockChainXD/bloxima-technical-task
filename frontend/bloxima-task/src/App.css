@@ -1,7 +1,47 @@
+:root {
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  --x-gutter: var(--space-md);
+  --grid-gap: var(--space-md);
+
+  --max-card-width: 13rem;
+
+  --border-width: 0.0625rem;
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
+  --border-radius-lg: 2rem;
+
+  --color-gray-100: #f8f9fa;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #dee2e6;
+  --color-gray-400: #ced4da;
+  --color-gray-500: #adb5bd;
+  --color-gray-600: #6c757d;
+  --color-gray-700: #495057;
+  --color-gray-800: #343a40;
+  --color-gray-900: #212529;
+
+  --color-yellow-100: #fff3bf;
+  --color-yellow-200: #ffec99;
+  --color-yellow-300: #ffe066;
+  --color-yellow-400: #ffd43b;
+  --color-yellow-500: #ffc107;
+  --color-yellow-600: #ffb400;
+  --color-yellow-700: #ffab00;
+  --color-yellow-800: #ff9e00;
+  --color-yellow-900: #ff8f00;
+
+  --color-border: var(--color-gray-700);
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -39,23 +79,4 @@
 
 .read-the-docs {
   color: #888;
-}
-
-.mint-button {
-  background-color: #ffcc00;
-  color: #ffffff;
-  font-size: 24px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease;
-}
-
-.mint-button:hover {
-  background-color: #ff9900;
-}
-
-.mint-button:active {
-  background-color: #ff6600;
 }
