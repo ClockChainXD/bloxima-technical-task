@@ -6,19 +6,19 @@ export const NFTList: React.FC = () => {
     const [nfts, setNFTs] = useState<NFTCardProps[]>([]);
     const [dataSize, setDataSize] = useState(10);
     const [isLoading, setIsLoading] = useState(false);
-    useEffect(() => {
-        const fetchNFTs =  async () => {
-            try {
-                setIsLoading(true);
-                const response = await fetch(`http://localhost:3000/nfts/?offset=0&data_size=${dataSize}`);
-                const data = await response.json();
-                setNFTs(data);
-                setIsLoading(false);
-            } catch (error) {
-                console.error('Error fetching NFTs:', error);
-            }
-        };
+    const fetchNFTs =  async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch(`http://localhost:3000/nfts/?offset=0&data_size=${dataSize}`);
+            const data = await response.json();
+            setNFTs(data);
+            setIsLoading(false);
+        } catch (error) {
+            console.error('Error fetching NFTs:', error);
+        }
+    };
 
+    useEffect(() => {        
         fetchNFTs();                                   
     }, [dataSize]);
 
