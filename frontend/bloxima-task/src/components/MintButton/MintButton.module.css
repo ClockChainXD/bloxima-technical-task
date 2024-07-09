@@ -17,3 +17,44 @@
 .button:active {
   background-color: var(--color-yellow-700);
 }
+
+.colorfulButton {
+  background: linear-gradient(120deg, red, rgb(201, 131, 0), rgb(255, 179, 0), rgb(104, 109, 10), rgb(255, 0, 119), indigo, violet);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 15px;
+  border-color: brown;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.colorfulButton:hover {
+  box-shadow: 0 0 15px yellow;
+  transform: scale(1.05);
+}
+
+.colorfulButton:active {
+  box-shadow: 0 0 5px yellow;
+  transform: scale(0.95);
+}
+
+.colorfulButton:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  mix-blend-mode: difference;
+}

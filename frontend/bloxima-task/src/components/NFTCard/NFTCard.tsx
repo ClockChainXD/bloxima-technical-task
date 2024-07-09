@@ -10,7 +10,6 @@ export type NFTCardProps = {
 const NFTCard: React.FC<NFTCardProps> = ({ status, image, name }) => {
     return (
         <div className={styles.container}>
-            <h3>NFT Card</h3>
             <img src={image} alt={name} className={styles.image} />
             <p>Status: {status}</p>
             <p>Name: {name}</p>

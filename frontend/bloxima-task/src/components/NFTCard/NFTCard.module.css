@@ -1,18 +1,46 @@
+/* NFTCard.module.css */
+
 .container {
-  border-radius: var(--border-radius-sm);
-  border-width: var(--border-width);
-  border-color: var(--color-border);
-  border-style: solid;
-  padding: 1rem;
-  transition: border-color 300ms, background-color 300ms;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: 250px; /* Adjust the width as needed */
+  text-align: center;
+  margin: 10px;
 }
 
 .container:hover {
-  border-color: var(--color-gray-500);
-  background-color: var(--color-gray-800);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .image {
   width: 100%;
-  margin-bottom: 0.5rem;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #333;
+}
+
+p {
+  margin: 10px 0;
+  color: #666;
+}
+
+.status {
+  font-weight: bold;
+  color: #007bff; /* Primary color for status */
+}
+
+.name {
+  font-style: italic;
+  color: #555;
 }

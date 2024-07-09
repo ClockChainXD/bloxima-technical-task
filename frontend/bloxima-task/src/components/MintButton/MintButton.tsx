@@ -1,13 +1,19 @@
 import styles from "./MintButton.module.css";
-import { useWriteContract } from 'wagmi'
+import { BaseError, useWriteContract } from 'wagmi'
 import abi from '../../abi.json';
+import { useWaitForTransactionReceipt } from 'wagmi'
+import toast from "react-hot-toast";
 
 type MintButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children">;
 
 
 
 const MintButton = (props: MintButtonProps) => {
-    const { data: hash, writeContract, isPending } = useWriteContract()
+    const { data: hash, writeContract, isPending, isError, error } = useWriteContract()
+    const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({
+      hash,
+    })
     async function mintBloximaNFT() {
         try {
             await writeContract({
@@ -37,15 +43,18 @@ const MintButton = (props: MintButtonProps) => {
     }
     return (
         <div>
-            {hash && <div>Transaction Hash: {hash}</div>}
+            {isPending && hash && <div>Transaction Hash: {hash}</div>}
             <button disabled={isPending}
-            className={styles.button} {...props} onClick={mintBloximaNFT}>
-                {isPending ? 'Confirming...' : 'Mint Bloxima NFT'}
+            className={styles.colorfulButton} {...props} onClick={mintBloximaNFT}>
+                {isPending || isConfirming ? 'Confirming...' : 'Mint Bloxima NFT'}
             </button>
             <button disabled={isPending} 
-            className={styles.button} {...props} onClick={mintCandidateNFT}>
-                {isPending ? 'Confirming...' : 'Mint Candidate NFT'}
+            className={styles.colorfulButton} {...props} onClick={mintCandidateNFT}>
+                {isPending || isConfirming ? 'Confirming...' : 'Mint Candidate NFT'}
             </button>
+            {isError && error && toast.error(`Error minting NFT: ${(error as BaseError).shortMessage}`)}
+            {isPending && toast.loading('Waiting for confirmation...')}
+            {isConfirmed && toast.success('NFT Minted!')}
         </div>
     )
 };

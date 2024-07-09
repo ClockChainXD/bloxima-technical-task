@@ -1,47 +1,55 @@
+/* NFTList.module.css */
+
 .container {
-  display: grid;
-  padding-left: var(--x-gutter);
-  padding-right: var(--x-gutter);
-  width: calc(100vw - var(--x-gutter) * 2);
-  grid-template-columns: repeat(auto-fill, minmax(var(--max-card-width), 1fr));
-  gap: var(--grid-gap);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between NFT cards */
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for better contrast */
 }
 
 .loadMoreContainer {
   display: flex;
   justify-content: center;
-  padding: 2rem 0;
+  margin-top: 20px;
+}
+
+.loadMoreButton,
+.loader {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  font-family: 'Arial', sans-serif;
 }
 
 .loadMoreButton {
-  margin: 2rem auto;
-  padding: 0.5rem 1rem;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  background-color: var(--color-gray-100);
-  color: var(--color-gray-800);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 300ms, color 300ms;
+  background-color: #007bff; /* Primary color */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.loadMoreButton:hover {
+  background-color: #0056b3; /* Darker primary color for hover effect */
+  border-color: #ffffff; /* White border on hover */
+  color: #ffffff; /* Maintain text color as white on hover */
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #FFF;
-  border-bottom-color: #FF3D00;
-  border-radius: 50%;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-  padding: 1.5rem 1.5rem;
+  background-color: #f0f0f0; /* Light grey background for loader */
+  animation: spin 1s linear infinite; /* Spinning animation */
+}
 
-  }
-
-  @keyframes rotation {
+@keyframes spin {
   0% {
       transform: rotate(0deg);
   }
   100% {
       transform: rotate(360deg);
   }
-  } 
+}
