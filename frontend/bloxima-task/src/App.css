@@ -84,3 +84,16 @@
   font-size: 1rem;
   margin-left: var(--space-md);
 }
+
+.register-button {
+  background-color: var(--color-yellow-200);
+  color: var(--color-gray-900);
+  font-size: 24px;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 15px;
+  border-width: 1rem;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.3s ease;
+  margin: 1rem;
+}

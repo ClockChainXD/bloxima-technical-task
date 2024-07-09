@@ -10,16 +10,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
 
     return (
-        <div
-            onClick={onClose}
-            className={styles.outerContainer}
-        >
+
             <div
-                className={styles.innerContainer}
             >
                 {children}
             </div>
-        </div>
     );
 };
 

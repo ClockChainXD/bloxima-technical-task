@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from './RegisterForm.module.css';
+
+interface InputWithLabelProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    label: string;
+}
+
+const InputWithLabel = ({ label, id, ...props }: InputWithLabelProps) => (
+    <div className={styles.registerFormInput}>
+        <label htmlFor={id}>{label}</label>
+        <input id={id} {...props} />
+    </div>
+);
 
 const RegistrationForm = () => {
     const [formData, setFormData] = useState({
@@ -28,7 +40,7 @@ const RegistrationForm = () => {
             const options = {
                 method: 'POST',
                 headers: {
-                  'Content-Type': 'application/json', // Adjust content type as needed
+                    'Content-Type': 'application/json', // Adjust content type as needed
                 },
                 body: JSON.stringify(formData) // Convert data to JSON string
             };
@@ -43,42 +55,36 @@ const RegistrationForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="registration-form">
-            <div>
-                <label>
-                    Ordinal (Taproot) BTC Address:
-                    <input
-                        type="text"
-                        name="ordinalAddress"
-                        value={formData.ordinalAddress}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    ETH Wallet Address:
-                    <input
-                        type="text"
-                        name="ethAddress"
-                        value={formData.ethAddress}
-                        onChange={handleChange}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    BTC Payment Address (optional):
-                    <input
-                        type="text"
-                        name="btcPaymentAddress"
-                        value={formData.btcPaymentAddress}
-                        onChange={handleChange}
-                    />
-                </label>
-            </div>
+        <form onSubmit={handleSubmit} className={styles.registrationForm}>
+            <InputWithLabel
+                id='ordinalAddress'
+                type="text"
+                name="ordinalAddress"
+                value={formData.ordinalAddress}
+                onChange={handleChange}
+                required
+                label='Ordinal BTC Address'
+            />
+
+            <InputWithLabel
+                type="text"
+                name="ethAddress"
+                value={formData.ethAddress}
+                onChange={handleChange}
+                required
+                label="ETH Wallet Address"
+            />
+
+
+            <InputWithLabel
+                type="text"
+                name="btcPaymentAddress"
+                value={formData.btcPaymentAddress}
+                onChange={handleChange}
+                label="BTC Payment Address (optional)"
+            />
+
+
             {error && <p className="error-message">{error}</p>}
             <button type="submit">Register</button>
         </form>

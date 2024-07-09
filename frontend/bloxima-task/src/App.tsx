@@ -35,7 +35,7 @@ const handleClose = () => {return;}
       <ConnectWallet />
       </div>
       </div>
-      <button onClick={handleOpen}>Register To Ordinals Mint From Here</button>
+      <button className="register-button" onClick={handleOpen}>Register To Ordinals Mint From Here</button>
       <Modal isOpen={isOpen} onClose={handleClose}>
       <RegisterForm />
       </Modal>

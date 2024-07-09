@@ -1,33 +1,39 @@
-.registration-form {
+.registrationForm {
     display: flex;
-    margin: 1rem 2rem;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
     background: #f9f9f9;
+    flex-direction: column;
+    max-width: 36rem;
+    width: 100%;
+    margin: 0 auto;
+    gap: var(--space-xs);
 }
 
-.registration-form div {
-    margin-bottom: 15px;
+.registerFormInput {
+    display: flex;
+    flex-direction: column;
+    margin: var(--space-xxs) 0;
+    width: 100%;
 }
 
-.registration-form label {
+.registerFormInput label {
     display: flex;
     margin-bottom: 5px;
 }
 
-.registration-form input {
+.registerFormInput input {
     width: 100%;
-    padding: 8px;
+    padding: var(--space-xs);
     box-sizing: border-box;
 }
 
-.registration-form .error-message {
+.registrationForm .error-message {
     color: red;
-    margin-bottom: 15px;
 }
 
-.registration-form button {
+.registrationForm button {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -36,6 +42,6 @@
     cursor: pointer;
 }
 
-.registration-form button:hover {
+.registrationForm button:hover {
     background-color: #0056b3;
 }
