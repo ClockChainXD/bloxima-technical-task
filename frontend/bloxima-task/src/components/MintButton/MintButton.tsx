@@ -55,7 +55,6 @@ const MintButton = (props: MintButtonProps) => {
             </button>
             {isError && error && toast.error(`Error minting NFT: ${(error as BaseError).shortMessage}`)}
             {isConfirmed && toast.success('NFT Minted!')}
-            {isPending && toast.loading('Minting NFT...')}
         </div>
     )
 };
