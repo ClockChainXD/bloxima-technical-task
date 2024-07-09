@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { Connector, useConnect } from 'wagmi'
+import styles from './ConnectWalletButton.module.css'
 
 export  function handleConnect(connectors: readonly Connector[]){
 
@@ -13,9 +13,8 @@ export const ConnectWallet = () =>{
 
 
     return (
-        <div>
-            <button onClick={() => handleConnect(connectors)}>Connect Wallet</button>
-        </div>
+            <button className={styles.button}onClick={() => handleConnect(connectors)}>Connect Wallet</button>
+
     );
 }
 

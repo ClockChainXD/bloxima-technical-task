@@ -14,7 +14,7 @@ const connectDB = async () => {
 		await client.db("bloximatask").command({ ping: 1 });
 		const db = client.db("bloximatask");
 		console.log(
-			`MongoDB connected to host with url: ${config.MONGO_URI}`
+			`MongoDB connected DB with name: ${db.databaseName}`
 		);
 		return db;
 	} catch (error) {

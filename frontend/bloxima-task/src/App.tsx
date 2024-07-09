@@ -8,6 +8,8 @@ import ConnectWalletButton from "./components/ConnectWalletButton";
 import { Account } from './account'
 import { Toaster } from "react-hot-toast";
 import { useState } from "react";
+import RegisterForm from "./components/RegisterForm";
+import Modal from "./components/Modal";
 
 const queryClient = new QueryClient()
 
@@ -19,8 +21,9 @@ function ConnectWallet() {
 }
 
 function App() {
-
-
+const [isOpen, setIsOpen] = useState(false);
+const handleOpen = () => setIsOpen(!isOpen);
+const handleClose = () => {return;}
   return (
     <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
@@ -32,6 +35,10 @@ function App() {
       <ConnectWallet />
       </div>
       </div>
+      <button onClick={handleOpen}>Register To Ordinals Mint From Here</button>
+      <Modal isOpen={isOpen} onClose={handleClose}>
+      <RegisterForm />
+      </Modal>
       <NFTList />
       <MintButton />
       </div>
