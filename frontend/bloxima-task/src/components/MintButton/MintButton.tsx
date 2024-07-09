@@ -17,7 +17,7 @@ const MintButton = (props: MintButtonProps) => {
     async function mintBloximaNFT() {
         try {
             await writeContract({
-                address: '0xa73655417dBD4C4ef0e878E7aC7245B197944979',
+                address: import.meta.env.VITE_BLOXIMA_NFT_CONTRACT_ADDRESS,
                 abi,
                 functionName: "mintNFT",
                 args: [],
@@ -31,7 +31,8 @@ const MintButton = (props: MintButtonProps) => {
     async function mintCandidateNFT() {
         try {
             await writeContract({
-                address: '0x93a63a5301a20CE98c39Fd48FE513c2298B18A66',
+                //@ts-ignore
+                address: import.meta.env.VITE_BLOXIMA_CANDIDATE_CONTRACT_ADDRESS,
                 abi,
                 functionName: "mintNFT",
                 args: [],
@@ -53,7 +54,6 @@ const MintButton = (props: MintButtonProps) => {
                 {isPending || isConfirming ? 'Confirming...' : 'Mint Candidate NFT'}
             </button>
             {isError && error && toast.error(`Error minting NFT: ${(error as BaseError).shortMessage}`)}
-            {isPending && toast.loading('Waiting for confirmation...')}
             {isConfirmed && toast.success('NFT Minted!')}
         </div>
     )
