@@ -15,7 +15,7 @@ Contracts are deployed:
 ### Note: Right now there are 3 NFTs that are minted, you can see them on the frontend.
 
 
-But you can deploy them again by following the steps below.
+But you can deploy contracts again by following the steps below.
 1. Go to the contracts folder and run `npm install`
 ```bash
 cd contracts
