@@ -15,7 +15,7 @@ Contracts are deployed:
 ### Note: Right now there are 3 NFTs that are minted, you can see them on the frontend.
 
 
-But you can deploy them again by following the steps below.
+But you can deploy contracts again by following the steps below.
 1. Go to the contracts folder and run `npm install`
 ```bash
 cd contracts
@@ -26,14 +26,14 @@ npm install
 npx hardhat ignition deploy ignition/modules/BloximaNFTPack.ts --network holesky
 ```
 3. After deploy you will see new deployed contracts on the console, copy the address of BloximaNFT and BloximaCandidateNFT and paste them in the frontend to .env file
-```
 Go to frontend/bloxima-task/.env.development
+```
 VITE_BLOXIMA_NFT_CONTRACT_ADDRESS=NFT Contract deployed address here
 VITE_BLOXIMA_CANDIDATE_CONTRACT_ADDRESS=Candidate Contract deployed address here
 ```
-Also go to backend and change the contract addresses from there:
-```
+Also go to backend/config/config.js file and change the contract addresses from there:
 Go to backend/config/config.js and change
+```
 BLOXIMA_NFT_CONTRACT_ADDRESS: "your deployed BloximaNFT contract address",
 ```
 Note: We don't use candidate contract address because we don't display it on frontend
