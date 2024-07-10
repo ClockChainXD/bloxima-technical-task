@@ -3,9 +3,10 @@ import styles from './ConnectWalletButton.module.css'
 
 export  function handleConnect(connectors: readonly Connector[]){
 
-    return connectors.map((connector) => (
-        connector.connect()
-    ))
+    return connectors.map((connector) => {
+        connector.connect({chainId: 17000})
+
+    })
 }
 
 export const ConnectWallet = () =>{
